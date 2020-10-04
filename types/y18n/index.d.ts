@@ -8,11 +8,11 @@ interface Config {
     /**
      * The locale directory, default ./locales.
      */
-    directory: string;
+    directory?: string;
     /**
      * Should newly observed strings be updated in file, default true.
      */
-    updateFiles: boolean;
+    updateFiles?: boolean;
     /**
      * What locale should be used.
      */
@@ -21,14 +21,14 @@ interface Config {
      * Should fallback to a language-only file (e.g. en.json) be allowed
      * if a file matching the locale does not exist (e.g. en_US.json), default true.
      */
-    fallbackToLanguage: boolean;
+    fallbackToLanguage?: boolean;
 }
 
 declare class Y18N {
     /**
      * Create an instance of y18n with the config provided
      */
-    constructor(config?: Config)
+    constructor(config?: Config);
 
     /**
      * Print a localized string, %s will be replaced with args.
@@ -39,7 +39,14 @@ declare class Y18N {
      * Print a localized string with appropriate pluralization.
      * If %d is provided in the string, the count will replace this placeholder.
      */
-    __n(singularString: string, pluralString: string, count: number, arg1?: string, arg2?: string, arg3?: string): string;
+    __n(
+        singularString: string,
+        pluralString: string,
+        count: number,
+        arg1?: string,
+        arg2?: string,
+        arg3?: string,
+    ): string;
 
     /**
      * Set the current locale being used.
